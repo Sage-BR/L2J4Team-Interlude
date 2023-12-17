@@ -15,11 +15,11 @@
 	<aCar name="admin_removeaio" accessLevel="7" />
 	
 
-	<!-- Eventos aCis 384 Juvenil Amaro Dev -->
+	<!-- Eventos 4Team Dev Sage -->
 	<aCar name="admin_ptfarm" accessLevel="7"/>
 	<aCar name="admin_tour" accessLevel="7"/>
 
-	<!-- FAKE PLAYER Dev 384 -->
+	<!-- FAKE PLAYER 4Team -->
 	<aCar name="admin_takecontrol" accessLevel="7"/>
 	<aCar name="admin_releasecontrol" accessLevel="7"/>
 	<aCar name="admin_pvp" accessLevel="7"/>
