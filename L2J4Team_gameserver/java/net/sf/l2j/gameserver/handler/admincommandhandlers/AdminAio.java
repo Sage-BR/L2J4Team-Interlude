@@ -82,10 +82,10 @@ public class AdminAio implements IAdminCommandHandler
 				if (target.isAio())
 			{
 					target.setAio(false);
-					activeChar.sendMessage(target.getName() + " seu Aio foi removido.");
+					activeChar.sendMessage(target.getName() + "Your Aio has been removed.");
 				}
 				else
-					activeChar.sendMessage(target.getName() + " não é Aio.");
+					activeChar.sendMessage(target.getName() + " It's not Aio.");
 			}
 		}
 		return true;
@@ -100,12 +100,12 @@ public class AdminAio implements IAdminCommandHandler
 		if (remainingTime > 0)
 		{
 			target.getMemos().set("aioTime", remainingTime + TimeUnit.DAYS.toMillis(time));
-			target.sendMessage(target.getName() + " seu Aio foi estendido por " + time + " dias(s).");
+			target.sendMessage(target.getName() + " Your Aio has been extended by " + time + " dias(s).");
 		}
 		else
 		{
 			target.getMemos().set("aioTime", System.currentTimeMillis() + TimeUnit.DAYS.toMillis(time));
-			target.sendMessage(target.getName() + " agora você é Aio, sua duração é de " + time + " dia(s).");
+			target.sendMessage(target.getName() + " Now you are Aio, your duration is " + time + " dia(s).");
 			
 			for (IntIntHolder item : Config.LIST_AIO_ITEMS)
 			{

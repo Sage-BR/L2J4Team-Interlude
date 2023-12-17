@@ -44,7 +44,7 @@ public enum FakePlayerNameManager {
 	
 	private void loadWordlist()
     {
-        try(LineNumberReader lnr = new LineNumberReader(new BufferedReader(new FileReader(new File("./config/L2J4Team/Phantom/Fakename.txt"))));)
+        try(LineNumberReader lnr = new LineNumberReader(new BufferedReader(new FileReader(new File("./config/4team/Phantom/Fakename.txt"))));)
         {
             String line;
             ArrayList<String> playersList = new ArrayList<>();

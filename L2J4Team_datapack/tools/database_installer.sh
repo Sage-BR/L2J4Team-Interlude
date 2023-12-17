@@ -4,13 +4,13 @@ configure() {
 
 # Loginserver
 LSDBHOST="localhost"
-LSDB="L2J4Team"
+LSDB="l2jdb"
 LSUSER="root"
 LSPASS=""
 
 # Gameserver
 GSDBHOST="localhost"
-GSDB="L2J4Team"
+GSDB="l2jdb"
 GSUSER="root"
 GSPASS=""
 

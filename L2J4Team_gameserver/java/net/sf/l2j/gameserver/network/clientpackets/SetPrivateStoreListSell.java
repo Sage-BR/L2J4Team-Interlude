@@ -52,19 +52,19 @@ public final class SetPrivateStoreListSell extends L2GameClientPacket
 
 		if (Config.STORE_RESTRICTION_TYPE == RestrictionType.PVP && player.getPvpKills() < Config.MIN_PVP_TO_USE_STORE)
 		{
-			player.sendMessage("Você deve ter pelo menos " + Config.MIN_PVP_TO_USE_STORE + " (PVP) para uma abrir loja particular.");
+			player.sendMessage("VocÃª deve ter pelo menos " + Config.MIN_PVP_TO_USE_STORE + " (PVP) para uma abrir loja particular.");
 			return;
 		}
 		
 		if (Config.STORE_RESTRICTION_TYPE == RestrictionType.PK && player.getPkKills() < Config.MIN_PK_TO_USE_STORE)
 		{
-			player.sendMessage("Você deve ter pelo menos " + Config.MIN_PK_TO_USE_STORE + " (PK) para uma abrir loja particular.");
+			player.sendMessage("VocÃª deve ter pelo menos " + Config.MIN_PK_TO_USE_STORE + " (PK) para uma abrir loja particular.");
 			return;
 		}
 		
 		if (Config.STORE_RESTRICTION_TYPE == RestrictionType.LEVEL && player.getLevel() < Config.MIN_LEVEL_TO_USE_STORE)
 		{
-			player.sendMessage("Você deve ter pelo menos " + Config.MIN_LEVEL_TO_USE_STORE + " (LEVEL) para uma abrir loja particular.");
+			player.sendMessage("VocÃª deve ter pelo menos " + Config.MIN_LEVEL_TO_USE_STORE + " (LEVEL) para uma abrir loja particular.");
 			return;
 		}
 		

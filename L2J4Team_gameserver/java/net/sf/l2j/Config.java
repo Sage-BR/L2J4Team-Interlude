@@ -37,18 +37,18 @@ public final class Config
 	public static final String SERVER_FILE = "./config/server.properties";
 	public static final String SIEGE_FILE = "./config/siege.properties";
 	//Custom Properties
-	public static final String NEWBIE_FILE = "./config/L2J4Team/StartPlayer.properties";
-	public static final String PHYSICIS_FILE = "./config/L2J4Team/Physics.properties";
-	public static final String SKINS_FILE = "./config/L2J4Team/Skins.properties";
-	public static final String BESTFARM_FILE = "./config/L2J4Team/DungeonPartyFarm.properties";
-	public static final String TOURNAMENTE_FILE = "./config/L2J4Team/Tournament.properties";
-	public static final String L2J4Team_FILE = "./config/L2J4Team/L2J4Team.properties";
-	public static final String DOBLE_CLASS_FILE = "./config/L2J4Team/DobleClassNpc.properties";
-	public static final String FAKEPLAYER_FILE = "./config/L2J4Team/FakePlayer.properties";
-	public static final String FAKE_ARMOR = "./config/L2J4Team/Phantom/ArmorFakePvP.properties";
-	public static final String FAKE_WEAPON = "./config/L2J4Team/Phantom/WeaponFakePvP.properties";
-	public static final String VOTEZONE_FILE = "./config/L2J4Team/VoteZone.properties";
-	public static final String TEAMVSTEAM_FILE = "./config/L2J4Team/TeamVsTeam.properties";
+	public static final String NEWBIE_FILE = "./config/4team/StartPlayer.properties";
+	public static final String PHYSICIS_FILE = "./config/4team/Physics.properties";
+	public static final String SKINS_FILE = "./config/4team/Skins.properties";
+	public static final String BESTFARM_FILE = "./config/4team/DungeonPartyFarm.properties";
+	public static final String TOURNAMENTE_FILE = "./config/4team/Tournament.properties";
+	public static final String L2J4TEAM_FILE = "./config/4team/l2j4team.properties";
+	public static final String DOBLE_CLASS_FILE = "./config/4team/DobleClassNpc.properties";
+	public static final String FAKEPLAYER_FILE = "./config/4team/FakePlayer.properties";
+	public static final String FAKE_ARMOR = "./config/4team/Phantom/ArmorFakePvP.properties";
+	public static final String FAKE_WEAPON = "./config/4team/Phantom/WeaponFakePvP.properties";
+	public static final String VOTEZONE_FILE = "./config/4team/VoteZone.properties";
+	public static final String TEAMVSTEAM_FILE = "./config/4team/TeamVsTeam.properties";
 	
 	/** TvT Event settings */
 	public static boolean TVT_EVENT_ENABLED;
@@ -240,7 +240,7 @@ public final class Config
 	public static List<Integer> ARMOR_GHOST_HUNTER = new ArrayList<>();
 	public static String FAKE_ARMOR_FORTUNE;
 	public static List<Integer> ARMOR_FORTUNE = new ArrayList<>();
-	/** FINAL ARMOR FAKE PLAYER BAN JUVENIL AMARO-TM **/
+	/** FINAL ARMOR FAKE PLAYER L2J4Team **/
 	
 	/** FAKE WEAPON e Weapons L2J4Team **/
 	public static String FAKE_WEAPON_MYSTIC_MUSE;
@@ -305,7 +305,7 @@ public final class Config
 	public static List<Integer> WEAPON_GHOST_HUNTER = new ArrayList<>();
 	public static String FAKE_WEAPON_FORTUNE_SEEKER;
 	public static List<Integer> WEAPON_FORTUNE_SEEKER = new ArrayList<>();
-	/** FINAL WEAPON WEAPONS FAKE PLAYER BAN JUVENIL AMARO-TM **/
+	/** FINAL WEAPON WEAPONS FAKE PLAYER L2J4Team **/
 	
 	public static boolean ALLOW_GIVE_ITEM_WITHOUT_CHECK_OF_TOPSITES;
 	public static boolean MENU;
@@ -2875,29 +2875,29 @@ private static final void loadTournament()
 
 }
 	
-	private static final void loadL2J4Team()
+	private static final void loadl2j4team()
 {	
-	final ExProperties L2J4Team = initProperties(Config.L2J4Team_FILE);
+	final ExProperties l2j4team = initProperties(Config.L2J4TEAM_FILE);
 	
-	AUTO_SAVE_TIME = L2J4Team.getProperty("AutoSaveTime", "20:00").split(",");
+	AUTO_SAVE_TIME = l2j4team.getProperty("AutoSaveTime", "20:00").split(",");
 	
-	ENABLE_BACKUP_BOOLEAN = Boolean.parseBoolean(L2J4Team.getProperty("AutoSaveDB", "True"));
-	NAME_DATA_BASE = L2J4Team.getProperty("URL_DB", "L2J4Team");
+	ENABLE_BACKUP_BOOLEAN = Boolean.parseBoolean(l2j4team.getProperty("AutoSaveDB", "True"));
+	NAME_DATA_BASE = l2j4team.getProperty("URL_DB", "l2j4team");
 	
-	LEAVE_BUFFS_ON_DIE = Boolean.parseBoolean(L2J4Team.getProperty("LeaveBuffsOnDie", "True"));
+	LEAVE_BUFFS_ON_DIE = Boolean.parseBoolean(l2j4team.getProperty("LeaveBuffsOnDie", "True"));
 	
-    ALLOW_ANNOUNCE_ONLINE_PLAYERS = Boolean.parseBoolean(L2J4Team.getProperty("AllowAnnounceOnlinePlayers", "True"));
-    ANNOUNCE_ONLINE_PLAYERS_DELAY = Integer.parseInt(L2J4Team.getProperty("AnnounceOnlinePlayersDelay", "300"));
+    ALLOW_ANNOUNCE_ONLINE_PLAYERS = Boolean.parseBoolean(l2j4team.getProperty("AllowAnnounceOnlinePlayers", "True"));
+    ANNOUNCE_ONLINE_PLAYERS_DELAY = Integer.parseInt(l2j4team.getProperty("AnnounceOnlinePlayersDelay", "300"));
 
 	
-	String ap = L2J4Team.getProperty("AutoPotions", "");
+	String ap = l2j4team.getProperty("AutoPotions", "");
 	String[] ap_split = ap.split(";");
 	for (String s : ap_split)
 	{
 		String[] ss = s.split(",");
 		AUTO_POTIONS.put(Integer.parseInt(ss[0]), Integer.parseInt(ss[1]));
 	}
-	String apl = L2J4Team.getProperty("AutoPotionsLimits", "");
+	String apl = l2j4team.getProperty("AutoPotionsLimits", "");
 	String[] apl_split = apl.split(";");
 	for (String s : apl_split)
 	{
@@ -2905,88 +2905,88 @@ private static final void loadTournament()
 		AUTO_POTIONS_LIMITS.put(Integer.parseInt(ss[0]), new String[] { ss[1], ss[2] });
 	}
 	
-	AIO_TITLE = L2J4Team.getProperty("AioTitle", "Aio");
-	AIO_COLOR = Integer.decode("0x" + L2J4Team.getProperty("AioColor", "606060"));
-	LIST_AIO_ITEMS = L2J4Team.parseIntIntList("AioItems", "1-268");
-	LIST_AIO_SKILLS = L2J4Team.parseIntIntList("AioSkills", "1-268");
+	AIO_TITLE = l2j4team.getProperty("AioTitle", "Aio");
+	AIO_COLOR = Integer.decode("0x" + l2j4team.getProperty("AioColor", "606060"));
+	LIST_AIO_ITEMS = l2j4team.parseIntIntList("AioItems", "1-268");
+	LIST_AIO_SKILLS = l2j4team.parseIntIntList("AioSkills", "1-268");
 	
-	VIP_COLOR = Integer.decode("0x" + L2J4Team.getProperty("VipColor", "FFFF00"));
-	LIST_VIP_SKILLS = L2J4Team.parseIntIntList("VipSkill", "1-268");
-	LIST_VIP_ITEMS = L2J4Team.parseIntIntList("VipItems", "1-268");
+	VIP_COLOR = Integer.decode("0x" + l2j4team.getProperty("VipColor", "FFFF00"));
+	LIST_VIP_SKILLS = l2j4team.parseIntIntList("VipSkill", "1-268");
+	LIST_VIP_ITEMS = l2j4team.parseIntIntList("VipItems", "1-268");
 	
-	VIP_RATE_XP = L2J4Team.getProperty("VipXpRates", 1.5);
-	VIP_RATE_SP = L2J4Team.getProperty("VipSpRates", 1.5);
-	VIP_ADENA_RATES = L2J4Team.getProperty("VipAdenaDrop", 1.5);
-	VIP_SPOIL_RATES = L2J4Team.getProperty("VipSpoilRates", 1.5);
-	VIP_DROP_RATES = L2J4Team.getProperty("VipDrop", 1.5);
+	VIP_RATE_XP = l2j4team.getProperty("VipXpRates", 1.5);
+	VIP_RATE_SP = l2j4team.getProperty("VipSpRates", 1.5);
+	VIP_ADENA_RATES = l2j4team.getProperty("VipAdenaDrop", 1.5);
+	VIP_SPOIL_RATES = l2j4team.getProperty("VipSpoilRates", 1.5);
+	VIP_DROP_RATES = l2j4team.getProperty("VipDrop", 1.5);
 	
-	ID_REWARD = L2J4Team.getProperty("IdReward", 57);
-	MIN_PVP = L2J4Team.getProperty("MinPvp", 200);
-	BANKING_SYSTEM_GOLDCOIN = L2J4Team.parseIntIntList("BankingGoldCoin", "9209-1");
-	BANKING_SYSTEM_ADENA = L2J4Team.getProperty("BankingAdenaCount", 500000000);
+	ID_REWARD = l2j4team.getProperty("IdReward", 57);
+	MIN_PVP = l2j4team.getProperty("MinPvp", 200);
+	BANKING_SYSTEM_GOLDCOIN = l2j4team.parseIntIntList("BankingGoldCoin", "9209-1");
+	BANKING_SYSTEM_ADENA = l2j4team.getProperty("BankingAdenaCount", 500000000);
 	
-	ANNOUNCE_CASTLE_LORDS = L2J4Team.getProperty("AnnounceCastleLords", false);
-	ANNOUNCE_LORDS_ENTER_BY_CLAN_MEMBER_MSG = L2J4Team.getProperty("AnnounceLordsLoginByClanMemberMsg", "The Lord %player% leader of %castle% of the clan %clan% is now online.");
+	ANNOUNCE_CASTLE_LORDS = l2j4team.getProperty("AnnounceCastleLords", false);
+	ANNOUNCE_LORDS_ENTER_BY_CLAN_MEMBER_MSG = l2j4team.getProperty("AnnounceLordsLoginByClanMemberMsg", "The Lord %player% leader of %castle% of the clan %clan% is now online.");
 	
-	ANNOUNCE_KILL = L2J4Team.getProperty("AnnounceKill", false);
-	ANNOUNCE_PVP_MSG = L2J4Team.getProperty("AnnouncePvpMsg", "$killer has defeated $target");
-	ANNOUNCE_PK_MSG = L2J4Team.getProperty("AnnouncePkMsg", "$killer has slaughtered $target");
+	ANNOUNCE_KILL = l2j4team.getProperty("AnnounceKill", false);
+	ANNOUNCE_PVP_MSG = l2j4team.getProperty("AnnouncePvpMsg", "$killer has defeated $target");
+	ANNOUNCE_PK_MSG = l2j4team.getProperty("AnnouncePkMsg", "$killer has slaughtered $target");
 	
-	ANNOUNCE_VIP_ENTER = L2J4Team.getProperty("AnnounceVipLogin",false);
-	ANNOUNCE_VIP_ENTER_BY_CLAN_MEMBER_MSG = L2J4Team.getProperty("AnnounceVipLoginByClanMemberMsg", "The Vip %player% of the clan %clan% is now online.");
-	ANNOUNCE_VIP_ENTER_BY_PLAYER_MSG = L2J4Team.getProperty("AnnounceVipLoginByPlayerMsg", "The Vip %player% is now online.");	
+	ANNOUNCE_VIP_ENTER = l2j4team.getProperty("AnnounceVipLogin",false);
+	ANNOUNCE_VIP_ENTER_BY_CLAN_MEMBER_MSG = l2j4team.getProperty("AnnounceVipLoginByClanMemberMsg", "The Vip %player% of the clan %clan% is now online.");
+	ANNOUNCE_VIP_ENTER_BY_PLAYER_MSG = l2j4team.getProperty("AnnounceVipLoginByPlayerMsg", "The Vip %player% is now online.");	
 
-	ANNOUNCE_HERO_ONLY_BASECLASS = L2J4Team.getProperty("AnnounceHero", false);
-	ANNOUNCE_HERO_ENTER_BY_CLAN_MEMBER_MSG = L2J4Team.getProperty("AnnounceHeroLoginByClanMemberMsg", "The Hero %player% from %classe% and of the clan %clan% is now online.");
-	ANNOUNCE_HERO_ENTER_BY_PLAYER_MSG = L2J4Team.getProperty("AnnounceHeroLoginByPlayerMsg", "The Hero %player% from %classe% is now online.");
+	ANNOUNCE_HERO_ONLY_BASECLASS = l2j4team.getProperty("AnnounceHero", false);
+	ANNOUNCE_HERO_ENTER_BY_CLAN_MEMBER_MSG = l2j4team.getProperty("AnnounceHeroLoginByClanMemberMsg", "The Hero %player% from %classe% and of the clan %clan% is now online.");
+	ANNOUNCE_HERO_ENTER_BY_PLAYER_MSG = l2j4team.getProperty("AnnounceHeroLoginByPlayerMsg", "The Hero %player% from %classe% is now online.");
 	
-	ANNOUNCE_TOP = L2J4Team.getProperty("AnnounceTopKiller", false);
-	ANNOUNCE_TOP_PVP_ENTER_BY_CLAN_MEMBER_MSG = L2J4Team.getProperty("AnnounceTopPvPLoginByClanMemberMsg", "The Hero %player% from %classe% and of the clan %clan% is now online.");
-	ANNOUNCE_TOP_PVP_ENTER_BY_PLAYER_MSG = L2J4Team.getProperty("AnnounceTopPvPLoginByPlayerMsg", "The Hero %player% from %classe% is now online.");
-	ANNOUNCE_TOP_PK_ENTER_BY_CLAN_MEMBER_MSG = L2J4Team.getProperty("AnnounceTopPkLoginByClanMemberMsg", "The Hero %player% from %classe% and of the clan %clan% is now online.");
-	ANNOUNCE_TOP_PK_ENTER_BY_PLAYER_MSG = L2J4Team.getProperty("AnnounceTopPkLoginByPlayerMsg", "The Hero %player% from %classe% is now online.");
+	ANNOUNCE_TOP = l2j4team.getProperty("AnnounceTopKiller", false);
+	ANNOUNCE_TOP_PVP_ENTER_BY_CLAN_MEMBER_MSG = l2j4team.getProperty("AnnounceTopPvPLoginByClanMemberMsg", "The Hero %player% from %classe% and of the clan %clan% is now online.");
+	ANNOUNCE_TOP_PVP_ENTER_BY_PLAYER_MSG = l2j4team.getProperty("AnnounceTopPvPLoginByPlayerMsg", "The Hero %player% from %classe% is now online.");
+	ANNOUNCE_TOP_PK_ENTER_BY_CLAN_MEMBER_MSG = l2j4team.getProperty("AnnounceTopPkLoginByClanMemberMsg", "The Hero %player% from %classe% and of the clan %clan% is now online.");
+	ANNOUNCE_TOP_PK_ENTER_BY_PLAYER_MSG = l2j4team.getProperty("AnnounceTopPkLoginByPlayerMsg", "The Hero %player% from %classe% is now online.");
 	
-	ENABLE_BOSS_DEFEATED_MSG = L2J4Team.getProperty("EnableBossDefeatedMsg", false);
-	RAID_BOSS_DEFEATED_BY_CLAN_MEMBER_MSG = L2J4Team.getProperty("RaidBossDefeatedByClanMemberMsg", "Raid Boss %raidboss% has been defeated by %player% of clan %clan%.");
-	RAID_BOSS_DEFEATED_BY_PLAYER_MSG = L2J4Team.getProperty("RaidBossDefeatedByPlayerMsg", "Raid Boss %raidboss% has been defeated by %player%.");
-	GRAND_BOSS_DEFEATED_BY_CLAN_MEMBER_MSG = L2J4Team.getProperty("GrandBossDefeatedByClanMemberMsg", "Raid Boss %grandboss% has been defeated by %player% of clan %clan%.");
-	GRAND_BOSS_DEFEATED_BY_PLAYER_MSG = L2J4Team.getProperty("GrandBossDefeatedByPlayerMsg", "Raid Boss %grandboss% has been defeated by %player%.");
+	ENABLE_BOSS_DEFEATED_MSG = l2j4team.getProperty("EnableBossDefeatedMsg", false);
+	RAID_BOSS_DEFEATED_BY_CLAN_MEMBER_MSG = l2j4team.getProperty("RaidBossDefeatedByClanMemberMsg", "Raid Boss %raidboss% has been defeated by %player% of clan %clan%.");
+	RAID_BOSS_DEFEATED_BY_PLAYER_MSG = l2j4team.getProperty("RaidBossDefeatedByPlayerMsg", "Raid Boss %raidboss% has been defeated by %player%.");
+	GRAND_BOSS_DEFEATED_BY_CLAN_MEMBER_MSG = l2j4team.getProperty("GrandBossDefeatedByClanMemberMsg", "Raid Boss %grandboss% has been defeated by %player% of clan %clan%.");
+	GRAND_BOSS_DEFEATED_BY_PLAYER_MSG = l2j4team.getProperty("GrandBossDefeatedByPlayerMsg", "Raid Boss %grandboss% has been defeated by %player%.");
 
-	ALLOWED_SUBCLASS = L2J4Team.getProperty("AllowedSubclass", 3);
-	ALT_GAME_SUBCLASS_EVERYWHERE = L2J4Team.getProperty("AltSubclassEverywhere", false);
+	ALLOWED_SUBCLASS = l2j4team.getProperty("AllowedSubclass", 3);
+	ALT_GAME_SUBCLASS_EVERYWHERE = l2j4team.getProperty("AltSubclassEverywhere", false);
 	
-	OFFLINE_TRADE_ENABLE = L2J4Team.getProperty("OfflineTradeEnable", false);
-	OFFLINE_CRAFT_ENABLE = L2J4Team.getProperty("OfflineCraftEnable", false);
-	OFFLINE_MODE_IN_PEACE_ZONE = L2J4Team.getProperty("OfflineModeInPeaceZone", false);
-	OFFLINE_MODE_NO_DAMAGE = L2J4Team.getProperty("OfflineModeNoDamage", false);
-	OFFLINE_SET_NAME_COLOR = L2J4Team.getProperty("OfflineSetNameColor", false);
-	OFFLINE_NAME_COLOR = Integer.decode("0x" + L2J4Team.getProperty("OfflineNameColor", "808080"));
-	RESTORE_OFFLINERS = L2J4Team.getProperty("RestoreOffliners", false);
-	OFFLINE_MAX_DAYS = L2J4Team.getProperty("OfflineMaxDays", 10);
-	OFFLINE_DISCONNECT_FINISHED = L2J4Team.getProperty("OfflineDisconnectFinished", true);
+	OFFLINE_TRADE_ENABLE = l2j4team.getProperty("OfflineTradeEnable", false);
+	OFFLINE_CRAFT_ENABLE = l2j4team.getProperty("OfflineCraftEnable", false);
+	OFFLINE_MODE_IN_PEACE_ZONE = l2j4team.getProperty("OfflineModeInPeaceZone", false);
+	OFFLINE_MODE_NO_DAMAGE = l2j4team.getProperty("OfflineModeNoDamage", false);
+	OFFLINE_SET_NAME_COLOR = l2j4team.getProperty("OfflineSetNameColor", false);
+	OFFLINE_NAME_COLOR = Integer.decode("0x" + l2j4team.getProperty("OfflineNameColor", "808080"));
+	RESTORE_OFFLINERS = l2j4team.getProperty("RestoreOffliners", false);
+	OFFLINE_MAX_DAYS = l2j4team.getProperty("OfflineMaxDays", 10);
+	OFFLINE_DISCONNECT_FINISHED = l2j4team.getProperty("OfflineDisconnectFinished", true);
 	
-	for (String listid : L2J4Team.getProperty("RestrictedNames", "fuck,dildo,admin").split(","))
+	for (String listid : l2j4team.getProperty("RestrictedNames", "fuck,dildo,admin").split(","))
 		LIST_FORBIDDEN_NAMES.add(String.valueOf(listid));
 	
-	PROTECTION_HEAL = L2J4Team.getProperty("HealProtection", false);
-	PROTECTION_HEAL_PVP = L2J4Team.getProperty("HealCurrent", 1.);
+	PROTECTION_HEAL = l2j4team.getProperty("HealProtection", false);
+	PROTECTION_HEAL_PVP = l2j4team.getProperty("HealCurrent", 1.);
 	
-	ENABLE_FARM_PVP = L2J4Team.getProperty("PvPProtect", false);
+	ENABLE_FARM_PVP = l2j4team.getProperty("PvPProtect", false);
 	
 	
 	
-	DISABLE_ATTACK_NPC_TYPE = L2J4Team.getProperty("DisableAttackToNpcs", false);
-	ALLOWED_NPC_TYPES = L2J4Team.getProperty("AllowedNPCTypes");
+	DISABLE_ATTACK_NPC_TYPE = l2j4team.getProperty("DisableAttackToNpcs", false);
+	ALLOWED_NPC_TYPES = l2j4team.getProperty("AllowedNPCTypes");
 	LIST_ALLOWED_NPC_TYPES = new ArrayList<>();
 	for (String npc_type : ALLOWED_NPC_TYPES.split(","))
 	LIST_ALLOWED_NPC_TYPES.add(npc_type);
 	
-	FLAG_RB = L2J4Team.getProperty("FlagRbZones", false);
+	FLAG_RB = l2j4team.getProperty("FlagRbZones", false);
 	
-	RAID_BOSS_INFO_PAGE_LIMIT = L2J4Team.getProperty("RaidBossInfoPageLimit", 15);
-	RAID_BOSS_DROP_PAGE_LIMIT = L2J4Team.getProperty("RaidBossDropPageLimit", 15);
-	RAID_BOSS_DATE_FORMAT = L2J4Team.getProperty("RaidBossDateFormat", "MMM dd, HH:mm");
-	RAID_BOSS_IDS = L2J4Team.getProperty("RaidBossIds", "0,0");
+	RAID_BOSS_INFO_PAGE_LIMIT = l2j4team.getProperty("RaidBossInfoPageLimit", 15);
+	RAID_BOSS_DROP_PAGE_LIMIT = l2j4team.getProperty("RaidBossDropPageLimit", 15);
+	RAID_BOSS_DATE_FORMAT = l2j4team.getProperty("RaidBossDateFormat", "MMM dd, HH:mm");
+	RAID_BOSS_IDS = l2j4team.getProperty("RaidBossIds", "0,0");
 	LIST_RAID_BOSS_IDS = new ArrayList<>();
 	for (String val : RAID_BOSS_IDS.split(","))
 	{
@@ -2994,8 +2994,8 @@ private static final void loadTournament()
 		LIST_RAID_BOSS_IDS.add(npcId);
 	}
 	
-	GLOBAL_DROP = L2J4Team.getProperty("DropSystem", false);
-	String[] temp = L2J4Team.getProperty("DropList", "").split(";");
+	GLOBAL_DROP = l2j4team.getProperty("DropSystem", false);
+	String[] temp = l2j4team.getProperty("DropList", "").split(";");
 	for (String s : temp)
 	{
 		List<Integer> list = new ArrayList<>();
@@ -3006,41 +3006,41 @@ private static final void loadTournament()
 		DROP_LIST.put(Integer.parseInt(t[0]), list);
 	}
 	
-	TIME_DOUBLE_RATES = L2J4Team.getProperty("DoubleRatesTime", 18);
-	RATE_MULTIPLER = L2J4Team.getProperty("RateMultipler", 2.);
+	TIME_DOUBLE_RATES = l2j4team.getProperty("DoubleRatesTime", 18);
+	RATE_MULTIPLER = l2j4team.getProperty("RateMultipler", 2.);
 	
-	CKM_ENABLED = L2J4Team.getProperty("CKMEnabled", false);
-	CKM_CYCLE_LENGTH = L2J4Team.getProperty("CKMCycleLength", 86400000);
-	CKM_PVP_NPC_TITLE = L2J4Team.getProperty("CKMPvPNpcTitle", "%kills% PvPs in the last 24h");
-	CKM_PVP_NPC_TITLE_COLOR = Integer.decode("0x" + L2J4Team.getProperty("CKMPvPNpcTitleColor", "00CCFF"));
-	CKM_PVP_NPC_NAME_COLOR = Integer.decode("0x"+ L2J4Team.getProperty("CKMPvPNpcNameColor", "FFFFFF"));
-	CKM_PK_NPC_TITLE = L2J4Team.getProperty("CKMPKNpcTitle", "%kills% PKs in the last 24h");
-	CKM_PK_NPC_TITLE_COLOR = Integer.decode("0x" + L2J4Team.getProperty("CKMPKNpcTitleColor", "00CCFF"));
-	CKM_PK_NPC_NAME_COLOR = Integer.decode("0x" + L2J4Team.getProperty("CKMPKNpcNameColor", "FFFFFF"));
-	MONUMENT_EVENT_REWARDS = L2J4Team.parseIntIntList("CKMReward", "1-268");
+	CKM_ENABLED = l2j4team.getProperty("CKMEnabled", false);
+	CKM_CYCLE_LENGTH = l2j4team.getProperty("CKMCycleLength", 86400000);
+	CKM_PVP_NPC_TITLE = l2j4team.getProperty("CKMPvPNpcTitle", "%kills% PvPs in the last 24h");
+	CKM_PVP_NPC_TITLE_COLOR = Integer.decode("0x" + l2j4team.getProperty("CKMPvPNpcTitleColor", "00CCFF"));
+	CKM_PVP_NPC_NAME_COLOR = Integer.decode("0x"+ l2j4team.getProperty("CKMPvPNpcNameColor", "FFFFFF"));
+	CKM_PK_NPC_TITLE = l2j4team.getProperty("CKMPKNpcTitle", "%kills% PKs in the last 24h");
+	CKM_PK_NPC_TITLE_COLOR = Integer.decode("0x" + l2j4team.getProperty("CKMPKNpcTitleColor", "00CCFF"));
+	CKM_PK_NPC_NAME_COLOR = Integer.decode("0x" + l2j4team.getProperty("CKMPKNpcNameColor", "FFFFFF"));
+	MONUMENT_EVENT_REWARDS = l2j4team.parseIntIntList("CKMReward", "1-268");
 	
-	PCB_INTERVAL = L2J4Team.getProperty("PcBangPointTime", 0);
-	PCB_MIN_LEVEL = L2J4Team.getProperty("PcBangPointMinLevel", 20);
-	PCB_POINT_MIN = L2J4Team.getProperty("PcBangPointMinCount", 1);
-	PCB_POINT_MAX = L2J4Team.getProperty("PcBangPointMaxCount", 5);
-	PCB_CHANCE_DUAL_POINT = L2J4Team.getProperty("PcBangPointDualChance", 100);
-	PCB_AFK_TIMER = L2J4Team.getProperty("PcBangTimerAFK", 1);
+	PCB_INTERVAL = l2j4team.getProperty("PcBangPointTime", 0);
+	PCB_MIN_LEVEL = l2j4team.getProperty("PcBangPointMinLevel", 20);
+	PCB_POINT_MIN = l2j4team.getProperty("PcBangPointMinCount", 1);
+	PCB_POINT_MAX = l2j4team.getProperty("PcBangPointMaxCount", 5);
+	PCB_CHANCE_DUAL_POINT = l2j4team.getProperty("PcBangPointDualChance", 100);
+	PCB_AFK_TIMER = l2j4team.getProperty("PcBangTimerAFK", 1);
 	
-	CANCEL_SECONDS = L2J4Team.getProperty("CancelSeconds", 5);
-	RAIDBOSS_NOBLES = L2J4Team.getProperty("RaidBossId", 0);
-	ENABLE_SPREEKILLS = L2J4Team.getProperty("EnableSpreeKills", false);
+	CANCEL_SECONDS = l2j4team.getProperty("CancelSeconds", 5);
+	RAIDBOSS_NOBLES = l2j4team.getProperty("RaidBossId", 0);
+	ENABLE_SPREEKILLS = l2j4team.getProperty("EnableSpreeKills", false);
 	
-	ALLOW_GIVE_ITEM_WITHOUT_CHECK_OF_TOPSITES = L2J4Team.getProperty("AllowGiveItemWithoutCheckOfTopsites", false);
+	ALLOW_GIVE_ITEM_WITHOUT_CHECK_OF_TOPSITES = l2j4team.getProperty("AllowGiveItemWithoutCheckOfTopsites", false);
 	
-	MENU = L2J4Team.getProperty("VoteComander", false);
+	MENU = l2j4team.getProperty("VoteComander", false);
 	
 	// ------------------------
 	
-	ALLOW_TOPZONE_VOTE_REWARD = L2J4Team.getProperty("AllowTopzoneVoteReward", false);
-	TOPZONE_SERVER_ID = L2J4Team.getProperty("TopzoneServerID", 0);
-	TOPZONE_VOTES_DIFFERENCE = L2J4Team.getProperty("TopzoneVotesDifference", 5);
-	TOPZONE_REWARD_CHECK_TIME = L2J4Team.getProperty("TopzoneRewardCheckTime", 5);
-	String topzone_reward = L2J4Team.getProperty("TopzoneReward", "57,1");
+	ALLOW_TOPZONE_VOTE_REWARD = l2j4team.getProperty("AllowTopzoneVoteReward", false);
+	TOPZONE_SERVER_ID = l2j4team.getProperty("TopzoneServerID", 0);
+	TOPZONE_VOTES_DIFFERENCE = l2j4team.getProperty("TopzoneVotesDifference", 5);
+	TOPZONE_REWARD_CHECK_TIME = l2j4team.getProperty("TopzoneRewardCheckTime", 5);
+	String topzone_reward = l2j4team.getProperty("TopzoneReward", "57,1");
 	String[] topzone_reward_splitted = topzone_reward.split(";");
 	for (String s : topzone_reward_splitted)
 	{
@@ -3048,16 +3048,16 @@ private static final void loadTournament()
 		TOPZONE_REWARD.put(Integer.parseInt(ss[0]), Integer.parseInt(ss[1]));
 	}
 
-	TOPZONE_SERVER_API_KEY = L2J4Team.getProperty("TopzoneServerAPI", "");
+	TOPZONE_SERVER_API_KEY = l2j4team.getProperty("TopzoneServerAPI", "");
 	
 	// -------------------------
 
-	ALLOW_HOPZONE_VOTE_REWARD = L2J4Team.getProperty("AllowHopzoneVoteReward", false);
-	HOPZONE_SERVER_API_KEY = L2J4Team.getProperty("HopzoneServerAPI", "");
+	ALLOW_HOPZONE_VOTE_REWARD = l2j4team.getProperty("AllowHopzoneVoteReward", false);
+	HOPZONE_SERVER_API_KEY = l2j4team.getProperty("HopzoneServerAPI", "");
 
-	HOPZONE_VOTES_DIFFERENCE = L2J4Team.getProperty("HopzoneVotesDifference", 5);
-	HOPZONE_REWARD_CHECK_TIME = L2J4Team.getProperty("HopzoneRewardCheckTime", 5);
-	String hopzone_reward = L2J4Team.getProperty("HopzoneReward", "57,1");
+	HOPZONE_VOTES_DIFFERENCE = l2j4team.getProperty("HopzoneVotesDifference", 5);
+	HOPZONE_REWARD_CHECK_TIME = l2j4team.getProperty("HopzoneRewardCheckTime", 5);
+	String hopzone_reward = l2j4team.getProperty("HopzoneReward", "57,1");
 	String[] hopzone_reward_splitted = hopzone_reward.split(";");
 	for (String s : hopzone_reward_splitted)
 	{
@@ -3068,12 +3068,12 @@ private static final void loadTournament()
 	
 	// --------------------------
 	
-	ALLOW_NETWORK_VOTE_REWARD = L2J4Team.getProperty("AllowNetWorkVoteReward", false);
-	API_NETWORK = L2J4Team.getProperty("NetWorkServerAPI", "");
+	ALLOW_NETWORK_VOTE_REWARD = l2j4team.getProperty("AllowNetWorkVoteReward", false);
+	API_NETWORK = l2j4team.getProperty("NetWorkServerAPI", "");
 	
-	NETWORK_VOTES_DIFFERENCE = L2J4Team.getProperty("NetWorkVotesDifference", 5);
-	NETWORK_REWARD_CHECK_TIME = L2J4Team.getProperty("NetWorkRewardCheckTime", 5);
-	String netWork_reward = L2J4Team.getProperty("NetWorkReward", "57,1");
+	NETWORK_VOTES_DIFFERENCE = l2j4team.getProperty("NetWorkVotesDifference", 5);
+	NETWORK_REWARD_CHECK_TIME = l2j4team.getProperty("NetWorkRewardCheckTime", 5);
+	String netWork_reward = l2j4team.getProperty("NetWorkReward", "57,1");
 	String[] netWork_reward_splitted = netWork_reward.split(";");
 	for (String s : netWork_reward_splitted)
 	{
@@ -3082,7 +3082,7 @@ private static final void loadTournament()
 	}
 
 	
-	String ind_rewards = L2J4Team.getProperty("IndividualRewards", "57,1");
+	String ind_rewards = l2j4team.getProperty("IndividualRewards", "57,1");
 	String[] ind_rewards_splitted = ind_rewards.split(";");
 	for (String s : ind_rewards_splitted)
 	{
@@ -3197,7 +3197,7 @@ private static final void loadTournament()
 		
 		USE_BLOWFISH_CIPHER = server.getProperty("UseBlowfishCipher", true);
 		
-		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://localhost/L2J4Team");
+		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://localhost/l2j4team");
 		DATABASE_LOGIN = server.getProperty("Login", "root");
 		DATABASE_PASSWORD = server.getProperty("Password", "");
 		DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 10);
@@ -3505,7 +3505,7 @@ private static final void loadTournament()
 		
 		SHOW_LICENCE = server.getProperty("ShowLicence", true);
 		
-		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://localhost/L2J4Team");
+		DATABASE_URL = server.getProperty("URL", "jdbc:mariadb://localhost/l2j4team");
 		DATABASE_LOGIN = server.getProperty("Login", "root");
 		DATABASE_PASSWORD = server.getProperty("Password", "");
 		DATABASE_MAX_CONNECTIONS = server.getProperty("MaximumDbConnections", 5);
@@ -3559,7 +3559,7 @@ private static final void loadTournament()
 		
 		loadTournament();
 		
-		loadL2J4Team();
+		loadl2j4team();
 		
 		loadFakePlayer();
 		

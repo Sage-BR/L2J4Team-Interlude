@@ -82,10 +82,10 @@ public class AdminVip implements IAdminCommandHandler
 				if (target.isVip())
 				{
 					target.setVip(false);
-					activeChar.sendMessage(target.getName() + " seu Vip foi removido.");
+					activeChar.sendMessage(target.getName() + " Your Vip has been removed.");
 				}
 				else
-					activeChar.sendMessage(target.getName() + " não é Vip.");
+					activeChar.sendMessage(target.getName() + " It's not Vip.");
 			}
 		}
 		return true;
@@ -100,12 +100,12 @@ public class AdminVip implements IAdminCommandHandler
 		if (remainingTime > 0)
 		{
 			target.getMemos().set("vipTime", remainingTime + TimeUnit.DAYS.toMillis(time));
-			target.sendMessage(target.getName() + " seu Vip foi estendido por " + time + " dias(s).");
+			target.sendMessage(target.getName() + " Your Vip has been extended by " + time + " day(s).");
 		}
 		else
 		{
 			target.getMemos().set("vipTime", System.currentTimeMillis() + TimeUnit.DAYS.toMillis(time));
-			target.sendMessage(target.getName() + " agora você é Vip, sua duração é de " + time + " dia(s).");
+			target.sendMessage(target.getName() + " Now you are Vip, your duration is " + time + " day(s).");
 			
 			for (IntIntHolder item : Config.LIST_VIP_ITEMS)
 			{

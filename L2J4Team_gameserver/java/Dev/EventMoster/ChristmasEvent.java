@@ -43,7 +43,7 @@ public class ChristmasEvent implements IXmlReader
 	@Override
 	public void load()
 	{
-		parseFile("./config/L2J4Team/SantaClaus.xml");
+		parseFile("./config/4team/SantaClaus.xml");
 	}
 	
 	@Override

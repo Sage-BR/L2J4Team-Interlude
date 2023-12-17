@@ -3896,8 +3896,8 @@ public class Player extends Playable
 				
 				if (ip1.equals(ip2))
 				{
-					LOGGER.warn("PvP Protection: " + getName() + " e " + target.getName() + ". mesmo IP.");
-					sendMessage(target.getName() + " é do seu mesmo IP, não sera contado o PvP. Isso poderar levar BAN!");
+					LOGGER.warn("PvP Protection: " + getName() + " and " + target.getName() + ". same IP.");
+					sendMessage(target.getName() + " is from the same IP, PvP will not be counted. This may take BAN!");
 					return false;
 				}
 			}
@@ -4770,7 +4770,7 @@ public class Player extends Playable
 			
 			if (!Config.ALLOW_WYVERN_RESTRITION_CITY && isInsideZone(ZoneId.TOWN))
 			{
-				sendMessage("Desculpe mais você não pode usar montaria dentro da Cidade.");
+				sendMessage("Desculpe mais vocÃª nÃ£o pode usar montaria dentro da Cidade.");
 				return;
 			}
 			
@@ -10244,10 +10244,10 @@ public class Player extends Playable
 		        final byte b = (byte)Rnd.get(3);
 		        final Appearance localPcAppearance = new Appearance(b, b, b, sex);
 		        if (paramBoolean) {
-		            localPlayer = new Player(paramInt1, localL2PcTemplate, "JuvenilAmaro", localPcAppearance);
+		            localPlayer = new Player(paramInt1, localL2PcTemplate, "L2J4Team", localPcAppearance);
 		        }
 		        else {
-		            localPlayer = new Player(paramInt1, localL2PcTemplate, "JuvenilAmaro", localPcAppearance);
+		            localPlayer = new Player(paramInt1, localL2PcTemplate, "L2J4Team", localPcAppearance);
 		        }
 		        localPlayer.setAccessLevel(0);
 		        localPlayer.setHero(false);

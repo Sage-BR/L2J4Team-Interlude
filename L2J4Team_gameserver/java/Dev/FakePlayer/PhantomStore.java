@@ -152,7 +152,7 @@ public class PhantomStore
 		FileReader localFileReader = null;
 		try
 		{
-			File localFile = new File("./config/L2J4Team/Store/store_sets.ini");
+			File localFile = new File("./config/4team/Store/store_sets.ini");
 			if (!localFile.exists())
 			{
 				return;
@@ -599,7 +599,7 @@ public class PhantomStore
 		FileReader localFileReader = null;
 		try
 		{
-			File localFile = new File("./config/L2J4Team/Store/store_locs.ini");
+			File localFile = new File("./config/4team/Store/store_locs.ini");
 			if (!localFile.exists())
 			{
 				return;

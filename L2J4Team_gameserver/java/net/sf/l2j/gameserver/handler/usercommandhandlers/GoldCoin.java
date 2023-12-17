@@ -30,7 +30,7 @@ public class GoldCoin implements IUserCommandHandler
 					activeChar.addItem("Gold Coin", gold.getId(), gold.getValue(), activeChar, true);
 				}
 				else
-					activeChar.sendMessage("Você não tem Adena suficiente para converter para "+  ItemData.getInstance().getTemplate(gold.getId()).getName() +"(s), você precisa de " + Config.BANKING_SYSTEM_ADENA + " Adena.");
+					activeChar.sendMessage("VocÃª nÃ£o tem Adena suficiente para converter para "+  ItemData.getInstance().getTemplate(gold.getId()).getName() +"(s), vocÃª precisa de " + Config.BANKING_SYSTEM_ADENA + " Adena.");
 			}
 		}
 		else if (id == 119)
@@ -40,7 +40,7 @@ public class GoldCoin implements IUserCommandHandler
 			final long b = Config.BANKING_SYSTEM_ADENA;
 			if (a + b > Integer.MAX_VALUE)
 			{
-				activeChar.sendMessage("Você não tem espaço suficiente para toda a adena no inventário!");
+				activeChar.sendMessage("VocÃª nÃ£o tem espaÃ§o suficiente para toda a adena no inventÃ¡rio!");
 				return;
 			}
 						
@@ -52,7 +52,7 @@ public class GoldCoin implements IUserCommandHandler
 					activeChar.addAdena("Adena", Config.BANKING_SYSTEM_ADENA, activeChar, true);
 				}
 				else
-					activeChar.sendMessage("Você não tem nenhum "+ ItemData.getInstance().getTemplate(gold.getId()).getName() +" para trocar por " + Config.BANKING_SYSTEM_ADENA + " de Adena.");
+					activeChar.sendMessage("VocÃª nÃ£o tem nenhum "+ ItemData.getInstance().getTemplate(gold.getId()).getName() +" para trocar por " + Config.BANKING_SYSTEM_ADENA + " de Adena.");
 			}
 		}
 		

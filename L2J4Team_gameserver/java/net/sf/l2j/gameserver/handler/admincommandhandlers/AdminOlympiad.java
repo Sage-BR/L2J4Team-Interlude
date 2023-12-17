@@ -77,7 +77,7 @@ public class AdminOlympiad implements IAdminCommandHandler
 				StatsSet playerStat = Olympiad.getInstance().getNobleStats(target.getObjectId());
 				if (playerStat == null)
 				{
-					activeChar.sendMessage("Desculpe mais "+ target.getName() + " ainda não tem registro nas Olimpídas");
+					activeChar.sendMessage("Sorry, but "+ target.getName() + " Still has no record in the Olympics.");
 					return false;
 				}
 				
@@ -85,12 +85,12 @@ public class AdminOlympiad implements IAdminCommandHandler
 				int points = oldpoints + value;
 				if (points > 9999)
 				{
-					activeChar.sendMessage("Você não pode adicionar mais de 9999 pontos.");
+					activeChar.sendMessage("You cannot add more than 9999 points.");
 					return false;
 				}
 				playerStat.set("olympiad_points", points);
 				
-				activeChar.sendMessage("O Jogador " + target.getName() + " agora tem " + points + " pontos nas Olimpíadas.");
+				activeChar.sendMessage("The Player " + target.getName() + " Now has " + points + " points in the Olympics.");
 			}
 		}
 		else if (command.startsWith("admin_removeolypoints"))
@@ -106,7 +106,7 @@ public class AdminOlympiad implements IAdminCommandHandler
 				StatsSet playerStat = Olympiad.getInstance().getNobleStats(target.getObjectId());
 				if (playerStat == null)
 				{
-					activeChar.sendMessage("Desculpe mais "+ target.getName() + " ainda não tem registro nas Olimpídas");
+					activeChar.sendMessage("Sorry, but "+ target.getName() + " still has no record in the Olympics.");
 					return false;
 				}
 				int oldpoints = Olympiad.getInstance().getNoblePoints(target.getObjectId());
@@ -117,7 +117,7 @@ public class AdminOlympiad implements IAdminCommandHandler
 				
 				playerStat.set("olympiad_points", points);
 				
-				activeChar.sendMessage("O Jogador " + target.getName() + " agora tem " + points + " pontos nas Olimpíadas.");
+				activeChar.sendMessage("The Player " + target.getName() + " now has " + points + " points in the Olympics.");
 			}
 		}
 		else if (command.startsWith("admin_sethero"))
@@ -144,10 +144,10 @@ public class AdminOlympiad implements IAdminCommandHandler
 				if (target.isHero())
 				{
 					target.setHero(false);
-					activeChar.sendMessage(target.getName() + " seu Hero foi removido.");
+					activeChar.sendMessage(target.getName() + " Your Hero has been removed.");
 				}
 				else
-					activeChar.sendMessage(target.getName() + " não é Hero.");
+					activeChar.sendMessage(target.getName() + " It's not Hero.");
 			}
 		}
 		else if (command.startsWith("admin_setnoble"))
@@ -161,7 +161,7 @@ public class AdminOlympiad implements IAdminCommandHandler
 			if (target != null)
 			{
 				target.setNoble(!target.isNoble(), true);
-				target.sendMessage(target.getName() + " agora você é um nobles.");
+				target.sendMessage(target.getName() + " Now you are a noble.");
 			}
 		}
 		
@@ -177,12 +177,12 @@ public class AdminOlympiad implements IAdminCommandHandler
 		if (remainingTime > 0)
 		{
 			target.getMemos().set("heroTime", remainingTime + TimeUnit.DAYS.toMillis(time));
-			target.sendMessage(target.getName() + " seu Hero foi estendido por " + time + " dias(s).");
+			target.sendMessage(target.getName() + " Your Hero has been extended by " + time + " dias(s).");
 		}
 		else
 		{
 			target.getMemos().set("heroTime", System.currentTimeMillis() + TimeUnit.DAYS.toMillis(time));
-			target.sendMessage(target.getName() + " agora você é Hero, sua duração é de " + time + " dia(s).");
+			target.sendMessage(target.getName() + " Now you are a Hero, your duration is " + time + " day(s).");
 		}
 	}
 	

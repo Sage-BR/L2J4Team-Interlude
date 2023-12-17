@@ -92,7 +92,7 @@ public final class RequestBypassToServer extends L2GameClientPacket
 			ach.useAdminCommand(_command, player);
 		}
 		
-		// MENU L2J4Team JUVENIL JUNIOR
+		// MENU L2J4Team
 		else if (_command.startsWith("setPartyRefuse"))
 		{
 			if (player.isPartyInvProt())
@@ -394,7 +394,7 @@ public final class RequestBypassToServer extends L2GameClientPacket
 				
 				if (msg.equals(""))
 				{
-					player.sendMessage("A caixa de mensagem n„o pode estar vazia.");
+					player.sendMessage("A caixa de mensagem n√£o pode estar vazia.");
 					return;
 				}
 				
@@ -413,9 +413,9 @@ public final class RequestBypassToServer extends L2GameClientPacket
 				}
 				
 				REPORT_LOG.info("Character Info: " + info + "\r\nBug Type: " + type + "\r\nMessage: " + msg);
-				player.sendMessage("RelatÈrio enviado. Os Gms ir„o verifica-la em breve, obrigado.");
+				player.sendMessage("Relat√©rio enviado. Os Gms ir√£o verifica-la em breve, obrigado.");
 				AdminData.getInstance();
-				AdminData.broadcastMessageToGMs("Report Manager: "+ player.getName() + " enviou um relatÛrio de bug.");
+				AdminData.broadcastMessageToGMs("Report Manager: "+ player.getName() + " enviou um relat√≥rio de bug.");
 			}
 			catch (Exception e)
 			{

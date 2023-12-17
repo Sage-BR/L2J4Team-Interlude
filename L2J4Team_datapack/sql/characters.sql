@@ -52,6 +52,9 @@ CREATE TABLE IF NOT EXISTS characters (
   `clan_join_expiry_time` BIGINT UNSIGNED NOT NULL DEFAULT 0,
   `clan_create_expiry_time` BIGINT UNSIGNED NOT NULL DEFAULT 0,
   `death_penalty_level` SMALLINT UNSIGNED NOT NULL DEFAULT 0,
+  `lastVoteReward` bigint(20) NOT NULL DEFAULT '0',
+  `lasthwid` varchar(255) NOT NULL DEFAULT '',
+  `lastip` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (obj_Id),
   KEY `clanid` (`clanid`)
 );

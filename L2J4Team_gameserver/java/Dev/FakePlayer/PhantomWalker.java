@@ -145,7 +145,7 @@ public class PhantomWalker
 		FileReader localFileReader = null;
 		try
 		{
-			File localFile = new File("./config/L2J4Team/Walker/Walker_sets.ini");
+			File localFile = new File("./config/4team/Walker/Walker_sets.ini");
 			if (!localFile.exists())
 			{
 				return;
@@ -564,7 +564,7 @@ public class PhantomWalker
 		FileReader localFileReader = null;
 		try
 		{
-			File localFile = new File("./config/L2J4Team/Walker/Walker_locs.ini");
+			File localFile = new File("./config/4team/Walker/Walker_locs.ini");
 			if (!localFile.exists())
 			{
 				return;

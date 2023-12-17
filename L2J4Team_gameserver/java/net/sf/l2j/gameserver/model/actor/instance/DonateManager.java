@@ -50,12 +50,12 @@ public class DonateManager extends Folk
 		
 		if (OlympiadManager.getInstance().isRegistered(player))
 		{
-			player.sendMessage("Desculpe "+ player.getName() + " você não pode usar meus serviços registrado na Olympiad.");
+			player.sendMessage("Sorry "+ player.getName() + " you cannot use my services registered with Olympiad.");
 			return;
 		}
 		/**else if (player.getEvent() != null && player.getEvent().isStarted())
 		{
-			player.sendMessage("Desculpe "+ player.getName() + " você não pode usar meus serviços registrado em Evento..");
+			player.sendMessage("Sorry "+ player.getName() + " you cannot use my services registered in Event..");
 			return;	
 		}*/
 		
@@ -68,7 +68,7 @@ public class DonateManager extends Folk
 			{
 				if (player.getInventory().getInventoryItemCount(price.getId(), -1) < price.getValue())
 				{
-					player.sendMessage("Você não tem "+ ItemData.getInstance().getTemplate(price.getId()).getName() + " suficiente.");
+					player.sendMessage("You do not have "+ ItemData.getInstance().getTemplate(price.getId()).getName() + " enough.");
 					return;
 				}
 				
@@ -76,14 +76,14 @@ public class DonateManager extends Folk
 				{
 					if (player.isVip())
 					{
-						player.sendMessage("Desculpe Vip não pode se tornar Aio.");
+						player.sendMessage("Sorry Vip cannot become Aio.");
 						return;
 					}
 					
 					player.destroyItemByItemId("", price.getId(), price.getValue(), player, true);
 					AdminAio.doAio(player, service.getDuration());
 					
-					DONATE_AUDIT_LOG.info(player.getName() + " comprou "+ service.getDuration() +" dias de AIO. Seu ID [" + player.getObjectId() + "]");
+					DONATE_AUDIT_LOG.info(player.getName() + " he bought "+ service.getDuration() +" AIO days. Your ID [" + player.getObjectId() + "]");
 				}
 				else if (currentCommand.startsWith("clanLevel"))		
 				{		
@@ -91,19 +91,19 @@ public class DonateManager extends Folk
 					{
 						if (player.getClan().getLevel() == 8)
 						{
-							player.sendMessage("Desculpe, mais seu clan já estar level 8!");
+							player.sendMessage("Sorry, but your clan is already level 8!");
 							return;
 						}
 						
 						player.destroyItemByItemId("", price.getId(), price.getValue(), player, true);
 						
 						player.getClan().changeLevel(8);
-						player.sendMessage("Parabéns "+ player.getName() +" você acaba de comprar Level 8 para o seu clã.");
+						player.sendMessage("Congratulations "+ player.getName() +" you just bought Level 8 for your clan.");
 						
-						DONATE_AUDIT_LOG.info(player.getName() + " comprou Level 8 para o clã "+ player.getClan().getName() +". Seu ID [" + player.getObjectId() + "]");
+						DONATE_AUDIT_LOG.info(player.getName() + " Bought Level 8 for o clÃ£ "+ player.getClan().getName() +". Your ID [" + player.getObjectId() + "]");
 					}
 					else        
-						player.sendMessage("Desculpe mais só o lider do clan "+ player.getClan().getName() +" pode usar esse serviço.");  
+						player.sendMessage("Sorry but only the clan leader "+ player.getClan().getName() +" can use this service.");  
 				}
 				else if (currentCommand.startsWith("clanSkill"))		
 				{		
@@ -114,12 +114,12 @@ public class DonateManager extends Folk
 						for (int i = 370; i <= 391; i++)
 							player.getClan().addNewSkill(SkillTable.getInstance().getInfo(i, SkillTable.getInstance().getMaxLevel(i)), false);            
 						
-						player.sendMessage("Parabéns "+ player.getName() +" você acaba de comprar todas habilidades para o seu clã.");
+						player.sendMessage("Congratulations "+ player.getName() +" you just bought all skills for your clan.");
 						
-						DONATE_AUDIT_LOG.info(player.getName() + " comprou todas habilidades de clã, para o clã "+ player.getClan().getName() +". Seu ID [" + player.getObjectId() + "]");
+						DONATE_AUDIT_LOG.info(player.getName() + " bought all clan skills, for the clan "+ player.getClan().getName() +". You ID [" + player.getObjectId() + "]");
 					}
 					else        
-						player.sendMessage("Desculpe mais só o lider do clan "+ player.getClan().getName() +" pode usar esse serviço.");  
+						player.sendMessage("Sorry but only the clan leader "+ player.getClan().getName() +" you can use this service.");  
 				}
 				else if (currentCommand.startsWith("clanRep"))		
 				{		
@@ -128,12 +128,12 @@ public class DonateManager extends Folk
 						player.destroyItemByItemId("", price.getId(), price.getValue(), player, true);
 						player.getClan().addReputationScore(100000);    
 						player.getClan().updateClanInDB();
-						player.sendMessage("Parabéns "+ player.getName() +" você acaba de comprar 100000 de reputação para o seu clã.");
+						player.sendMessage("Congratulations "+ player.getName() +" you just bought 100000 reputation for your clan.");
 						
-						DONATE_AUDIT_LOG.info(player.getName() + " comprou 100000 de reputação, para o clã "+ player.getClan().getName() +". Seu ID [" + player.getObjectId() + "]");
+						DONATE_AUDIT_LOG.info(player.getName() + " bought 100000 reputation, for the clan "+ player.getClan().getName() +". You ID [" + player.getObjectId() + "]");
 					}
 					else        
-						player.sendMessage("Desculpe mais só o lider do clan "+ player.getClan().getName() +" pode usar esse serviço."); 
+						player.sendMessage("Sorry but just the clan leader "+ player.getClan().getName() +" you can use this service."); 
 				}
 				else if (currentCommand.startsWith("clanName"))		
 				{	
@@ -141,66 +141,66 @@ public class DonateManager extends Folk
 					
 					if (player.getClan() == null)
 					{
-						player.sendMessage("Desculpe "+ player.getName() +" mais você estar sem Clã.");
+						player.sendMessage("Sorry "+ player.getName() +" the more you are without a Clan.");
 						return;
 					}
 					
 					if (!player.isClanLeader())
 					{
-						player.sendMessage("Desculpe mais só o lider do clan "+ player.getClan().getName() +" pode usar esse serviço."); 
+						player.sendMessage("Sorry but just the clan leader "+ player.getClan().getName() +" can use this service."); 
 						return;
 					}
 					else if (player.getClan().getLevel() < 5)
 					{
-						player.sendMessage("Seu clã deve ter pelo menos nível 5 para alterar o nome.");
+						player.sendMessage("Your clan must be at least level 5 to change the name.");
 						return;
 					}
 					else if (!StringUtil.isValidString(newClanName, "^[A-Za-z0-9]{3,16}$"))
 					{
-						player.sendMessage("Nome incorreto. Por favor, tente novamente.");
+						player.sendMessage("Incorrect name. Please try again.");
 						return;
 					}
 					else if (newClanName.equals(player.getClan().getName()))
 					{
-						player.sendMessage("Por favor, escolha um nome diferente.");
+						player.sendMessage("Please choose a different name.");
 						return;
 					}
 					else if (ClanTable.getInstance().getClanByName(newClanName) != null)
 					{
-						player.sendMessage("O nome " + newClanName + " já existe.");
+						player.sendMessage("The name " + newClanName + " already exists.");
 						return;
 					}
 					
 					player.destroyItemByItemId("", price.getId(), price.getValue(), player, true);
 					player.getClan().setName(newClanName);
-					player.sendMessage("O novo nome do seu clã é " + newClanName);
+					player.sendMessage("Your clan's new name is " + newClanName);
 					
 					ThreadPool.schedule(() -> player.logout(false), 1000);
-					DONATE_AUDIT_LOG.info(player.getName() + " mudou o nome do clan "+ player.getClan().getName() +" para "+ newClanName +". Seu ID [" + player.getObjectId() + "]");
+					DONATE_AUDIT_LOG.info(player.getName() + " changed the name of the clan "+ player.getClan().getName() +" for "+ newClanName +". Your ID [" + player.getObjectId() + "]");
 				}
 				else if (currentCommand.startsWith("hero"))		
 				{		
 					if (player.isHero())
 					{
-						player.sendMessage("Desculpe mais você já é um héroi da classe ." + player.setClassName(player.getBaseClass()));
+						player.sendMessage("Sorry but you're already a hero of the class." + player.setClassName(player.getBaseClass()));
 						return;
 					}
 					else if (player.getBaseClass() != player.getClassId().getId())
 					{
-						player.sendMessage("Você precisa estar com sua Classe "+ player.setClassName(player.getBaseClass()) + " para poder mudar.");
+						player.sendMessage("you need to be with your Class "+ player.setClassName(player.getBaseClass()) + " to be able to change.");
 						return;
 					}
 					
 					player.destroyItemByItemId("", price.getId(), price.getValue(), player, true);
 					AdminOlympiad.doHero(player, service.getDuration());
 					
-					DONATE_AUDIT_LOG.info(player.getName() + " comprou "+ service.getDuration() +" dias de Hero. Seu ID [" + player.getObjectId() + "]");
+					DONATE_AUDIT_LOG.info(player.getName() + " Bought "+ service.getDuration() +" days of Hero. Your ID [" + player.getObjectId() + "]");
 				}
 				else if (currentCommand.startsWith("classe"))		
 				{	
 					if (player.getBaseClass() != player.getClassId().getId())
 					{
-						player.sendMessage("Você precisa estar com sua Classe "+ player.setClassName(player.getBaseClass()) + " para poder mudar.");
+						player.sendMessage("you need to be with your Class "+ player.setClassName(player.getBaseClass()) + " to be able to change.");
 						return;
 					}
 					
@@ -210,7 +210,7 @@ public class DonateManager extends Folk
 						case "Duelist":
 							if (player.getClassId().getId() == 88)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -219,7 +219,7 @@ public class DonateManager extends Folk
 						case "Dreadnought":
 							if (player.getClassId().getId() == 89)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -228,7 +228,7 @@ public class DonateManager extends Folk
 						case "Phoenix_Knight":
 							if (player.getClassId().getId() == 90)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -237,7 +237,7 @@ public class DonateManager extends Folk
 						case "Hell_Knight":
 							if (player.getClassId().getId() == 91)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -246,7 +246,7 @@ public class DonateManager extends Folk
 						case "Saggitarius":
 							if (player.getClassId().getId() == 92)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -255,7 +255,7 @@ public class DonateManager extends Folk
 						case "Adventure":
 							if (player.getClassId().getId() == 93)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -264,7 +264,7 @@ public class DonateManager extends Folk
 						case "Archmage":
 							if (player.getClassId().getId() == 94)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -273,7 +273,7 @@ public class DonateManager extends Folk
 						case "Soultaker":
 							if (player.getClassId().getId() == 95)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -282,7 +282,7 @@ public class DonateManager extends Folk
 						case "Arcana_Lord":
 							if (player.getClassId().getId() == 96)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -291,7 +291,7 @@ public class DonateManager extends Folk
 						case "Cardial":
 							if (player.getClassId().getId() == 97)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -300,7 +300,7 @@ public class DonateManager extends Folk
 						case "Hierophant":
 							if (player.getClassId().getId() == 98)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -309,7 +309,7 @@ public class DonateManager extends Folk
 						case "Evas_Templar":
 							if (player.getClassId().getId() == 99)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -318,7 +318,7 @@ public class DonateManager extends Folk
 						case "Sword_Muse":
 							if (player.getClassId().getId() == 100)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -327,7 +327,7 @@ public class DonateManager extends Folk
 						case "Wind_Rider":
 							if (player.getClassId().getId() == 101)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -336,7 +336,7 @@ public class DonateManager extends Folk
 						case "Moonlight_Sentinel":
 							if (player.getClassId().getId() == 102)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -345,7 +345,7 @@ public class DonateManager extends Folk
 						case "Mystic_Muse":
 							if (player.getClassId().getId() == 103)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -354,7 +354,7 @@ public class DonateManager extends Folk
 						case "Elemental_Master":
 							if (player.getClassId().getId() == 104)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -363,7 +363,7 @@ public class DonateManager extends Folk
 						case "Evas_Saint":
 							if (player.getClassId().getId() == 105)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -372,7 +372,7 @@ public class DonateManager extends Folk
 						case "Shillie_Templar":
 							if (player.getClassId().getId() == 106)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -381,7 +381,7 @@ public class DonateManager extends Folk
 						case "Spectral_Dancer":
 							if (player.getClassId().getId() == 107)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -390,7 +390,7 @@ public class DonateManager extends Folk
 						case "Ghost_Hunter":
 							if (player.getClassId().getId() == 108)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -399,7 +399,7 @@ public class DonateManager extends Folk
 						case "Ghost_Sentinel":
 							if (player.getClassId().getId() == 109)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -408,7 +408,7 @@ public class DonateManager extends Folk
 						case "Storm_Screamer":
 							if (player.getClassId().getId() == 110)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -417,7 +417,7 @@ public class DonateManager extends Folk
 						case "Spectral_Master":
 							if (player.getClassId().getId() == 111)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -426,7 +426,7 @@ public class DonateManager extends Folk
 						case "Shillien_Saint":
 							if (player.getClassId().getId() == 112)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -435,7 +435,7 @@ public class DonateManager extends Folk
 						case "Titan":
 							if (player.getClassId().getId() == 113)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -444,7 +444,7 @@ public class DonateManager extends Folk
 						case "Grand_Khavatari":
 							if (player.getClassId().getId() == 114)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -453,7 +453,7 @@ public class DonateManager extends Folk
 						case "Dominator":
 							if (player.getClassId().getId() == 115)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -462,7 +462,7 @@ public class DonateManager extends Folk
 						case "Doomcryer":
 							if (player.getClassId().getId() == 116)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -471,7 +471,7 @@ public class DonateManager extends Folk
 						case "Fortune_Seeker":
 							if (player.getClassId().getId() == 117)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -480,7 +480,7 @@ public class DonateManager extends Folk
 						case "Maestro":
 							if (player.getClassId().getId() == 118)
 							{
-								player.sendMessage(player.getName() + " sua classe já é " + classes + " escolha outra.");
+								player.sendMessage(player.getName() + " Your class is already " + classes + " Choose another.");
 								return;
 							}
 							
@@ -490,7 +490,7 @@ public class DonateManager extends Folk
 					
 					player.destroyItemByItemId("", price.getId(), price.getValue(), player, true);
 					
-					DONATE_AUDIT_LOG.info(player.getName() + " mudou sua classe para "+ classes +". Seu ID [" + player.getObjectId() + "]");
+					DONATE_AUDIT_LOG.info(player.getName() + " changed your class to "+ classes +". Your ID [" + player.getObjectId() + "]");
 				}
 				else if (currentCommand.startsWith("name"))		
 				{
@@ -498,21 +498,21 @@ public class DonateManager extends Folk
 					
 					if (!StringUtil.isValidString(newName, "^[A-Za-z0-9]{3,16}$"))
 					{
-						player.sendMessage("Nome incorreto. Por favor, tente novamente.");
+						player.sendMessage("Incorrect name. Please try again.");
 						return;
 					}
 					
 					// Name is a npc name.
 					if (NpcData.getInstance().getTemplateByName(newName) != null)
 					{
-						player.sendMessage("Nome incorreto. Por favor, tente novamente.");
+						player.sendMessage("Incorrect name. Please try again.");
 						return;
 					}
 					
 					// Name already exists.
 					if (PlayerInfoTable.getInstance().getPlayerObjectId(newName) > 0)
 					{
-						player.sendMessage("Nome incorreto. Por favor, tente novamente.");
+						player.sendMessage("Incorrect name. Please try again.");
 						return;
 					}
 					
@@ -520,66 +520,66 @@ public class DonateManager extends Folk
 					
 					player.setName(newName);
 					PlayerInfoTable.getInstance().updatePlayerData(player, false);
-					player.sendMessage("Você acaba de trocar nick. Lembrando que seu antigo nome estar salvo no banco de dados.");
+					player.sendMessage("You've just swapped nicks. Remembering that your old name will be saved in the database.");
 					player.broadcastUserInfo();
 					player.store();
 					
-					DONATE_AUDIT_LOG.info(player.getName() + " usou o serviço troca de nome seu ID é  [" + player.getObjectId() + "]");
+					DONATE_AUDIT_LOG.info(player.getName() + " used the name change service your ID is  [" + player.getObjectId() + "]");
 				}
 				else if (currentCommand.startsWith("nobles"))		
 				{				
 					if (player.isNoble())
 					{
-						player.sendMessage("Desculpe "+ player.getName() +" mais você já é Nobles.");
+						player.sendMessage("Sorry "+ player.getName() +" the more you're already Nobles.");
 						return;
 					}
 					
 					player.destroyItemByItemId("", price.getId(), price.getValue(), player, true);
 					player.setNoble(true, true);
-					player.sendMessage("Parabéns "+ player.getName() +" você acaba de comprar Nobles.");
+					player.sendMessage("Congratulations "+ player.getName() +" you just bought Nobles.");
 					player.broadcastUserInfo();
 					
-					DONATE_AUDIT_LOG.info(player.getName() + " comprou nobles. Seu ID [" + player.getObjectId() + "]");
+					DONATE_AUDIT_LOG.info(player.getName() + " Bought nobles. Your ID [" + player.getObjectId() + "]");
 				}
 				else if (currentCommand.startsWith("level"))		
 				{			
 					if (player.getLevel() >= 81)
 					{
-						player.sendMessage("Você já é level 81.");
+						player.sendMessage("You already are level 81.");
 						return;
 					}
 					
 					player.destroyItemByItemId("", price.getId(), price.getValue(), player, true);
 					PlayerLevelData.getInstance().getPlayerLevel(81).getRequiredExpToLevelUp();
-					player.sendMessage("Parabéns "+ player.getName() +" você acaba de comprar level 81.");
+					player.sendMessage("Congratulations "+ player.getName() +" you just bought level 81.");
 					
-					DONATE_AUDIT_LOG.info(player.getName() + " comprou level 81. Seu ID [" + player.getObjectId() + "]");
+					DONATE_AUDIT_LOG.info(player.getName() + " Bought level 81. Your ID [" + player.getObjectId() + "]");
 				}
 				else if (currentCommand.startsWith("vip"))		
 				{		
 					if (player.isAio())
 					{
-						player.sendMessage("Desculpe Aio não pode se tornar Vip.");
+						player.sendMessage("Sorry Aio can't become Vip.");
 						return;
 					}
 					
 					player.destroyItemByItemId("", price.getId(), price.getValue(), null, true);
 					AdminVip.doVip(player, service.getDuration());
 					
-					DONATE_AUDIT_LOG.info(player.getName() + " comprou "+ service.getDuration() +" dias de VIP. Seu ID [" + player.getObjectId() + "]");
+					DONATE_AUDIT_LOG.info(player.getName() + " Bought "+ service.getDuration() +" days of VIP. Your ID [" + player.getObjectId() + "]");
 				}
 				else if (currentCommand.startsWith("gender"))		
 				{			
 					
 					player.destroyItemByItemId("", price.getId(), price.getValue(), player, true);
 					player.getAppearance().setSex(player.getAppearance().getSex() == Sex.MALE ? Sex.FEMALE : Sex.MALE);
-					player.sendMessage("Parabéns "+ player.getName() +" você acaba de trocar de gênero. Você será desconectado em 3 segundos.");
+					player.sendMessage("Congratulations "+ player.getName() +" You've just switched genders. You will be logged out in 3 seconds.");
 					player.broadcastUserInfo();
 					
 					player.decayMe();
 					player.spawnMe();
 					ThreadPool.schedule(() -> player.logout(false), 3000);
-					DONATE_AUDIT_LOG.info(player.getName() + " comprou nobles. Seu ID [" + player.getObjectId() + "]");
+					DONATE_AUDIT_LOG.info(player.getName() + " Bought nobles. Your ID [" + player.getObjectId() + "]");
 				}
 			}
 		}
@@ -599,7 +599,7 @@ public class DonateManager extends Folk
 		player.getAvailableSkills();
 		player.disarmWeapons();
 		player.stopAllEffectsExceptThoseThatLastThroughDeath();
-		player.sendMessage(player.getName() + " sua nova classe é " + player.getTemplate().getClassName() + ".");
+		player.sendMessage(player.getName() + " Its new class is " + player.getTemplate().getClassName() + ".");
 		
 		try (Connection con = L2DatabaseFactory.getInstance().getConnection())
 		{

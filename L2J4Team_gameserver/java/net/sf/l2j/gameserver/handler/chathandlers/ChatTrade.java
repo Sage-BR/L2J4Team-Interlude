@@ -27,13 +27,13 @@ public class ChatTrade implements IChatHandler
 
 		if (Config.TRADE_RESTRICTION_TYPE == RestrictionType.PVP && activeChar.getPvpKills() < Config.TRADE_RESTRICTION_VALUE)
 		{
-			activeChar.sendMessage("Você só pode usar o chat com " + Config.TRADE_RESTRICTION_VALUE + " (PVP).");
+			activeChar.sendMessage("You can only use the chat with " + Config.TRADE_RESTRICTION_VALUE + " (PVP).");
 			return;
 		}
 		
 		if (Config.TRADE_RESTRICTION_TYPE == RestrictionType.LEVEL && activeChar.getLevel() < Config.TRADE_RESTRICTION_VALUE)
 		{
-			activeChar.sendMessage("Você só pode usar o chat no level " + Config.TRADE_RESTRICTION_VALUE + ".");
+			activeChar.sendMessage("You can only use chat at level " + Config.TRADE_RESTRICTION_VALUE + ".");
 			return;
 		}
 			

@@ -46,12 +46,39 @@
 		<mkdir dir="${build.dist.game}/log" />
 		<mkdir dir="${build.dist.login}/log" />
 		<mkdir dir="${build.dist.game}/config" />
+		<mkdir dir="${build.dist.game}/config/4team" />
+		<mkdir dir="${build.dist.game}/config/4team/Phantom" />
+		<mkdir dir="${build.dist.game}/config/4team/Store" />
+		<mkdir dir="${build.dist.game}/config/4team/Walker" />
 		<mkdir dir="${build.dist.login}/config" />
 		<copy todir="${build.dist.game}/config">
 			<fileset dir="config">
 				<include name="*.properties" />
 				<exclude name="banned_ips.properties" />
 				<exclude name="loginserver.properties" />
+			</fileset>
+		</copy>
+		<copy todir="${build.dist.game}/config/4team">
+			<fileset dir="config/4team">
+				<include name="*.properties" />
+				<include name="*.xml" />
+			</fileset>
+		</copy>
+		<copy todir="${build.dist.game}/config/4team/Phantom">
+			<fileset dir="config/4team/Phantom">
+				<include name="*.properties" />
+				<include name="*.ini" />
+				<include name="*.txt" />
+			</fileset>
+		</copy>
+		<copy todir="${build.dist.game}/config/4team/Store">
+			<fileset dir="config/4team/Store">
+				<include name="*.ini" />
+			</fileset>
+		</copy>
+		<copy todir="${build.dist.game}/config/4team/Walker">
+			<fileset dir="config/4team/Walker">
+				<include name="*.ini" />
 			</fileset>
 		</copy>
 		<copy todir="${build.dist.login}/config">

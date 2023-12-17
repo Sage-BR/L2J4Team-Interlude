@@ -32,18 +32,18 @@ public class ChangeTime implements IUserCommandHandler
 			else
 			{
 				if (activeChar.getPvpKills() < Config.MIN_PVP)
-					activeChar.sendMessage("Você precisa de "+ Config.MIN_PVP +" pvp para prosseguir com a troca. Você só tem " + activeChar.getPvpKills() + " PvP'S");
+					activeChar.sendMessage("You Need "+ Config.MIN_PVP +" PvP to proceed with the exchange. You just have to " + activeChar.getPvpKills() + " PvP'S");
 				
 				if (_calcule < 1)
-					activeChar.sendMessage("Você não tem 1 hora online agora.");
+					activeChar.sendMessage("You don't have 1 hour online right now.");
 			}
 		}
 		else if(id == 121)
 		{
 			if (_calcule >= 1) 
-				activeChar.sendMessage("Você tem atualmente "+ _calcule +" horas online.");
+				activeChar.sendMessage("You currently have "+ _calcule +" online hours.");
 			else  if (_calcule < 1)
-				activeChar.sendMessage("Você tem atualmente " + activeChar.getOnlineTime() / 60 + " minutos online.");
+				activeChar.sendMessage("You currently have " + activeChar.getOnlineTime() / 60 + " Online Minutes.");
 		}
 		
 		return;

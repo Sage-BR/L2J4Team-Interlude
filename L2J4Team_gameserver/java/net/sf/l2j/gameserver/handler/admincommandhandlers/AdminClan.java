@@ -37,7 +37,7 @@ public class AdminClan implements IAdminCommandHandler
 			}
 			else if (clan.getLevel() == 8)
 			{
-				player.sendMessage("Desculpe, mais o clan "+ clan.getName() +" já estar level 8!");
+				player.sendMessage("Sorry, plus the clan "+ clan.getName() +" Already be level 8!");
 				return false;
 			}
 			
@@ -48,7 +48,7 @@ public class AdminClan implements IAdminCommandHandler
 			clan.changeLevel(8);
 			clan.updateClanInDB();
 			
-			player.sendMessage("O Clan " + clan.getName() +" esta clanfull agora!");
+			player.sendMessage("O Clan " + clan.getName() +" It's clanfull now!");
 		}
 		
 		return true;
